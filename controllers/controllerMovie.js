@@ -1,14 +1,12 @@
 const db = require("../models");
-const ProdHouse = db.ProductionHouse;
-// console.log(ProdHouse);
+const Movie = db.Movie;
+const ProductionHouse = db.ProductionHouse;
 
 class Controller {
   static findAll(req, res) {
-    console.log("tes");
-    ProdHouse.findAll()
+    Movie.findAll({ include: [ProductionHouse] })
       .then((data) => {
-        res.render("prodHouse", { data });
-        console.log(data);
+        res.render("movies", { data });
       })
       .catch((err) => {
         res.send(err);
