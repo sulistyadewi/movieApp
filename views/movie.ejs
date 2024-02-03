@@ -4,17 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <style>
+    <style>
       table,
       th,
       td {
         border: 1px solid black;
       }
-    </style> -->
+    </style>
   </head>
   <body>
-    <h1>Hello world</h1>
-    <!-- <table style="width: 100%">
+    <table style="width: 100%">
       <thead>
         <tr>
           <th>Name</th>
@@ -24,7 +23,7 @@
           <th></th>
         </tr>
       </thead>
-      <!-- <tbody>
+      <tbody>
         <% for (let i = 0; i < data.length; i++) { %>
         <tr>
           <td><%= data[i].name %></td>
@@ -35,13 +34,13 @@
             data[i].ProductionHouse.name_prodHouse:"unknown" %>
           </td>
           <td>
-            <a href="/movie/<%= data[i].id/edit %>"></a>
-            <a href="/movie/<%= data[i].id/delete %>">Delete</a>
+            <a href="/movie/<%= data[i].id %>/edit">Edit</a> ||
+            <a href="/movie/<%= data[i].id %>/delete">Delete</a>
           </td>
         </tr>
         <% } %>
-      </tbody> -->
-    </table> -->
+      </tbody>
+    </table>
     <button><a href="/movie/add">Add Movie</a></button>
   </body>
 </html>

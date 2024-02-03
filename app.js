@@ -6,8 +6,16 @@ const router = require("./routes/index");
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", router);
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
-app.listen(() => {
+app.use("/", router);
+
+app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
+
+// app.listen(() => {
+//   console.log(`http://localhost:${port}`);
+// });
