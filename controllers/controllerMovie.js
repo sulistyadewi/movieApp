@@ -39,9 +39,34 @@ class Controller {
   }
   static formEdit(req, res) {
     const id = req.params.id;
+    let movie = [];
     Movie.findByPk(id)
       .then((data) => {
-        res.render("editMovie", { data });
+        // res.render("editMovie", { data });
+        movie.push(data);
+        return ProductionHouse.findAll();
+        // res.send(data);
+      })
+      .catch((err) => {
+        res.send(err);
+      })
+      .then((prodHouse) => {
+        movie.push(prodHouse);
+        res.render("editMovie", { movie });
+        // res.send(movie);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+  static saveEdit(req, res) {
+    const id = req.params.id;
+    const { name, release_year, genre } = req.body;
+    const objectEdit = { id, name, release_year, genre };
+    Movie.update(objectEdit, { where: { id } })
+      .then((data) => {
+        // res.redirect("/movie");
+        res.send(data);
       })
       .catch((err) => {
         res.send(err);

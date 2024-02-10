@@ -3,7 +3,7 @@ const routePH = require("./productionHouse");
 const routeMovie = require("./movie");
 
 router.get("/", (req, res) => {
-  res.send("Hello");
+  res.render("home");
 });
 
 router.use("/prodhouse", routePH);
