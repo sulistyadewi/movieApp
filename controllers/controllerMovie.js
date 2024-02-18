@@ -14,7 +14,22 @@ class Controller {
       });
   }
   static formAdd(req, res) {
-    res.render("addMovie");
+    let movie = [];
+    Movie.findAll()
+      .then((data) => {
+        movie.push(data);
+        return ProductionHouse.findAll();
+      })
+      .catch((err) => {
+        res.send(err);
+      })
+      .then((prodHouse) => {
+        movie.push(prodHouse);
+        res.render("addMovie", { movie });
+        // res.send(movie);
+      })
+      .catch((err) => [res.send(err)]);
+    // res.render("addMovie");
   }
   static addData(req, res) {
     const { name, release_year, genre } = req.body;
@@ -52,8 +67,8 @@ class Controller {
       })
       .then((prodHouse) => {
         movie.push(prodHouse);
-        res.render("editMovie", { movie });
-        // res.send(movie);
+        // res.render("editMovie", { movie });
+        res.send(movie);
       })
       .catch((err) => {
         res.send(err);
