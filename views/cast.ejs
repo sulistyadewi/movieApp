@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/5ec826f967.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <div class="max-w-3xl mx-auto mt-10">
+        <a
+          href="/cast/add"
+          class="bg-cyan-400 hover:bg-cyan-600 px-5 py-2 text-slate-50 rounded shadow-md mb-5 transition-all ease-in-out duration-300"
+          >Add Cast</a
+        >
+      </div>
+      <table class="text-sm max-w-3xl mx-auto w-full text-left mt-5">
+        <thead class="text-xs uppercase text-slate-50 bg-cyan-600">
+          <tr>
+            <th class="px-6 py-3">Profile</th>
+            <th class="px-6 py-3">Full Name</th>
+            <th class="px-6 py-3">Birth Year</th>
+            <th class="px-6 py-3">Phone Number</th>
+            <th class="px-6 py-3">Gender</th>
+            <th class="px-6 py-3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(list => { %>
+          <tr class="border-b">
+            <td class="px-6 py-4 text-slate-900">
+              <img
+                src="<%= list.profile %>"
+                alt=""
+                class="w-16 h-16 object-cover rounded-full"
+              />
+            </td>
+            <td class="px-6 py-4 text-slate-900"><%= list.fullName() %></td>
+            <td class="px-6 py-4 text-slate-900"><%= list.birth_year %></td>
+            <td class="px-6 py-4 text-slate-900"><%= list.phone_number %></td>
+            <td class="px-6 py-4 text-slate-900"><%= list.gender %></td>
+            <td class="px-6 py-4 text-slate-900 flex">
+              <span>
+                <a
+                  href="/cast/<%= list.id %>/edit"
+                  class="font-medium text-amber-700 text-xl hover:text-amber-900"
+                  ><i class="fa-solid fa-pen-to-square flex"></i
+                ></a>
+              </span>
+              <span>
+                <a
+                  href="/cast/<%= list.id %>/delete"
+                  class="font-medium text-amber-700 text-xl hover:text-amber-900"
+                  ><i class="fa-solid fa-user-slash"></i
+                ></a>
+              </span>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

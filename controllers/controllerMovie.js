@@ -1,6 +1,8 @@
 const db = require("../models");
+const movie = require("../models/movie");
 const Movie = db.Movie;
 const ProductionHouse = db.ProductionHouse;
+const Cast = db.Cast;
 
 class Controller {
   static findAll(req, res) {
@@ -28,7 +30,9 @@ class Controller {
         res.render("addMovie", { movie });
         // res.send(movie);
       })
-      .catch((err) => [res.send(err)]);
+      .catch((err) => {
+        res.send(err);
+      });
     // res.render("addMovie");
   }
   static addData(req, res) {
@@ -83,6 +87,27 @@ class Controller {
         // res.redirect("/movie");
         res.send(data);
       })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+  static formCast(req, res) {
+    res.render("castAdd");
+  }
+  static addDataCast(req, res) {
+    const id = req.params.id;
+    let movie = [];
+    Movie.findByPk(id, { include: [Cast] })
+      .then((data) => {
+        movie.push(data);
+        console.log(data);
+      })
+      // .then((cast) => {
+      //   movie.push(cast);
+      //   // res.render("castAdd", {  });
+      //   console.log(movie);
+      //   res.send(movie);
+      // })
       .catch((err) => {
         res.send(err);
       });

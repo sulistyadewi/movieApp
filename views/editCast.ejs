@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <form
+      action="/cast/<%= data.id %>/edit"
+      method="POST"
+      enctype="multipart/form-data"
+      class="max-w-sm mx-auto mt-8"
+    >
+      <div class="mb-5">
+        <label for="" class="block mb-2 text-sm font-medium text-gray-900"
+          >Profile</label
+        >
+        <input
+          type="text"
+          id=""
+          name="profile"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+        <!-- <img src="/<%= data.profile %>" alt="" class="w-16 h-16 object-cover rounded-full"> -->
+      </div>
+      <div class="mb-5">
+        <label
+          for=""
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >First Name</label
+        >
+        <input
+          type="text"
+          id=""
+          name="first_name"
+          value="<%= data.first_name %>"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for=""
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Last Name</label
+        >
+        <input
+          type="text"
+          id=""
+          name="last_name"
+          value="<%= data.last_name %>"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="">Birth Year</label>
+        <input
+          type="text"
+          id=""
+          name="birth_year"
+          value="<%= data.birth_year %>"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="">Phone Number</label>
+        <input
+          type="text"
+          id=""
+          value="<%= data.phone_number %>"
+          name="phone_number"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="">Gender</label>
+        <select name="gender" id="" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <option value="Select Gender" >Select Gender</option>
+          <option value="Male"<%= data.gender==='Male'?'selected':'' %>>Male</option>
+          <option value="Female"<%= data.gender==='Female'?'selected':'' %>>Female</option>
+        </select>
+      </div>
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+      >
+        Submit
+      </button>
+    </form>
+  </body>
+</html>
