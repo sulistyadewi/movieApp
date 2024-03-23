@@ -7,43 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <header
-      class="bg-blue-300 z-50 fixed w-full flex items-center justify-between"
-    >
-      <div
-        class="flex w-full h-full z-50 items-center px-2 py-3 justify-between relative top-0 shadow-2xl"
-      >
-        <div class="flex">
-          <img
-            src="https://i.pinimg.com/564x/fc/eb/df/fcebdf9e34ad5d5f1d8f728f781a00ac.jpg"
-            alt=""
-            class="rounded-full w-14 h-14 mx-7 object-cover"
-          />
-          <h1
-            class="font-semibold tracking-wider self-center text-xl -ml-5 text-slate-700"
-          >
-            Movie App
-          </h1>
-        </div>
-        <div class="">
-          <ul class="flex gap-8 px-12">
-            <li>
-              <a href="" class="font-semibold hover:text-white">Home</a>
-            </li>
-            <li>
-              <a href="/movie" class="font-semibold hover:text-white">Movie</a>
-            </li>
-            <li>
-              <a href="/prodhouse" class="font-semibold hover:text-white"
-                >Production House</a
-              >
-            </li>
-            <li>
-              <a href="/cast" class="font-semibold hover:text-white">Cast</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <%- include('partial/header.ejs') %>
   </body>
 </html>

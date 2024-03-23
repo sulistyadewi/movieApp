@@ -28,5 +28,7 @@ router.post("/add", upload, Controller.addData);
 router.get("/:id/delete", Controller.deleteData);
 router.get("/:id/edit", Controller.formEdit);
 router.post("/:id/edit", upload, Controller.saveEdit);
+router.get("/:id/movieadd", Controller.formMovie);
+router.post("/:id/movieadd", Controller.addDataMovie);
 
 module.exports = router;

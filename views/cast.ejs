@@ -11,7 +11,8 @@
     ></script>
   </head>
   <body>
-    <div>
+    <%- include('partial/header.ejs') %>
+    <div class="mt-40">
       <div class="max-w-3xl mx-auto mt-10">
         <a
           href="/cast/add"
@@ -44,7 +45,7 @@
             <td class="px-6 py-4 text-slate-900"><%= list.birth_year %></td>
             <td class="px-6 py-4 text-slate-900"><%= list.phone_number %></td>
             <td class="px-6 py-4 text-slate-900"><%= list.gender %></td>
-            <td class="px-6 py-4 text-slate-900 flex">
+            <td class="px-8 py-4 text-slate-900 flex gap-2">
               <span>
                 <a
                   href="/cast/<%= list.id %>/edit"
@@ -56,7 +57,14 @@
                 <a
                   href="/cast/<%= list.id %>/delete"
                   class="font-medium text-amber-700 text-xl hover:text-amber-900"
-                  ><i class="fa-solid fa-user-slash"></i
+                  ><i class="fa-solid fa-trash flex"></i
+                ></a>
+              </span>
+              <span>
+                <a
+                  href="/cast/<%= list.id %>/movieadd"
+                  class="font-medium text-amber-700 text-xl hover:text-amber-900"
+                  ><i class="fa-solid fa-user-plus flex"></i
                 ></a>
               </span>
             </td>

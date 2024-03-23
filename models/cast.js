@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Cast.belongsToMany(models.Movie, { through: models.CastToMovie });
+      Cast.belongsToMany(models.Movie, {
+        through: models.CastToMovie,
+        foreignKey: "castId",
+      });
     }
   }
   Cast.init(
@@ -27,6 +30,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         beforeCreate(instance, opt) {
+          if (!instance.last_name) {
+            instance.last_name = instance.first_name;
+          }
+        },
+        beforeUpdate(instance, opt) {
+          console.log({ instance, opt });
           if (!instance.last_name) {
             instance.last_name = instance.first_name;
           }

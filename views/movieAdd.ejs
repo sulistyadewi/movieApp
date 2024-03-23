@@ -8,19 +8,19 @@
   </head>
   <body>
     <form
-      action="/movie/<%= movie[0].id %>/addcast"
+      action="/cast/<%= cast[0].id %>/movieadd"
       method="POST"
       class="max-w-sm mx-auto mt-8"
     >
       <div class="mb-5">
         <label for="">Cast</label>
         <select
-          name="castId"
+          name="movieId"
           id=""
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         >
-          <% movie[1].forEach(elem => { %>
-          <option value="<%= elem.id %>"><%= elem.fullName() %></option>
+          <% cast[1].forEach(elem => { %>
+          <option value="<%= elem.id %>"><%= elem.name %></option>
           <% }) %>
         </select>
       </div>
@@ -34,13 +34,13 @@
     <table class="border-2">
       <thead>
         <tr>
-          <th>Cast</th>
+          <th>Movie</th>
         </tr>
       </thead>
 
-      <% movie[0].Casts.forEach(elem => { %>
+      <% cast[0].Movies.forEach(elem => { %>
       <tr>
-        <td><%= elem.fullName() %></td>
+        <td><%= elem.name %></td>
       </tr>
       <% }) %>
     </table>

@@ -13,13 +13,26 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "ProductionHouseId",
         targetKey: "id",
       });
-      Movie.belongsToMany(models.Cast, { through: models.CastToMovie });
+      Movie.belongsToMany(models.Cast, {
+        through: models.CastToMovie,
+        foreignKey: "movieId",
+      });
     }
   }
   Movie.init(
     {
       name: DataTypes.STRING,
-      release_year: DataTypes.INTEGER,
+      release_year: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: false,
+          isLeapYear(year) {
+            if (year % 4 === 0) {
+              throw (new Error(), console.log("This is leap year"));
+            }
+          },
+        },
+      },
       genre: DataTypes.STRING,
     },
     {

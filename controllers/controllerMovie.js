@@ -1,8 +1,8 @@
 const db = require("../models");
-const movie = require("../models/movie");
 const Movie = db.Movie;
 const ProductionHouse = db.ProductionHouse;
 const Cast = db.Cast;
+const CastToMovie = db.CastToMovie;
 
 class Controller {
   static findAll(req, res) {
@@ -92,22 +92,31 @@ class Controller {
       });
   }
   static formCast(req, res) {
-    res.render("castAdd");
-  }
-  static addDataCast(req, res) {
-    const id = req.params.id;
+    const id = +req.params.id;
     let movie = [];
     Movie.findByPk(id, { include: [Cast] })
       .then((data) => {
         movie.push(data);
-        console.log(data);
+        return Cast.findAll({});
       })
-      // .then((cast) => {
-      //   movie.push(cast);
-      //   // res.render("castAdd", {  });
-      //   console.log(movie);
-      //   res.send(movie);
-      // })
+      .catch((err) => {
+        res.send(err);
+      })
+      .then((cast) => {
+        movie.push(cast);
+        res.render("castAdd", { movie });
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+  static addDataCast(req, res) {
+    let id = req.params.id;
+    const { castId } = req.body;
+    CastToMovie.create({ castId, movieId: id })
+      .then((data) => {
+        res.redirect("/movie");
+      })
       .catch((err) => {
         res.send(err);
       });
